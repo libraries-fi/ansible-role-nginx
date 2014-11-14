@@ -1,0 +1,23 @@
+---
+# defaults file for ajsalminen.nginx
+APT_CACHE_VALID_TIME: 3600
+
+nginx_enable_source: True
+nginx_disable_default: False
+nginx_install_state: present
+proxy_cache_inactive: '1d'
+# Large headers can go over this
+nginx_proxy_buffer_size: 8k
+
+apt_source_definitions:
+  Ubuntu:
+    source: ppa:nginx/stable
+    packages:
+      - pattern: '*nginx*'
+  Debian:
+    source: deb http://packages.dotdeb.org {{ansible_lsb.codename}} all
+    key:
+      url: http://www.dotdeb.org/dotdeb.gpg
+      id: 89DF5277
+    packages:
+      - pattern: '*nginx*'
