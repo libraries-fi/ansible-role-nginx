@@ -18,6 +18,7 @@ http {
                      'Cache-Control: $upstream_http_cache_control '
                      'Expires: $upstream_http_expires '
                      'X-Accel-Expires: $upstream_http_x_accel_expires '
+                     'Host: $host'
                      '"$request" ($status) '
                      '"$http_user_agent" ';
     access_log  /var/log/nginx/cache.log cache;
