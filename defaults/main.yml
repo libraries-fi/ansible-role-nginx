@@ -9,6 +9,10 @@ proxy_cache_inactive: '1d'
 # Large headers can go over this
 nginx_proxy_buffer_size: 8k
 
+# don't cache requests with PHP session cookie.
+nginx_bypass_cache_cookies:
+  - ~SESS
+
 apt_source_definitions:
   Ubuntu:
     source: ppa:nginx/stable

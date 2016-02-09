@@ -43,7 +43,9 @@ http {
 
 map $http_cookie $no_cache {
     default 0;
-    ~SESS 1; # PHP session cookie
+{% for value in nginx_bypass_cache_cookies %}
+    {{ value }} 1;
+{% endfor %}
 }
 
 
