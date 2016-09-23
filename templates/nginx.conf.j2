@@ -22,11 +22,7 @@ http {
                      '"$request" ($status) '
                      '"$http_user_agent" '
                      '"$remote_addr"';
-{% if log_to_syslog is defined %}
-    access_log  syslog:server=unix:/dev/log,severity=info cache; 
-{% else %}
-    access_log  /var/log/nginx/cache.log cache;
-{% endif %}
+   access_log {{ nginx_access_log }}
 
 {% if nginx_proxy is defined %}
     proxy_buffer_size {{nginx_proxy_buffer_size}};
