@@ -20,8 +20,13 @@ http {
                      'X-Accel-Expires: $upstream_http_x_accel_expires '
                      'Host: $host'
                      '"$request" ($status) '
-                     '"$http_user_agent" ';
+                     '"$http_user_agent" '
+                     '"$remote_addr"';
+{% if log_to_syslog is defined %}
+    access_log  syslog:server=unix:/dev/log,severity=info cache; 
+{% else %}
     access_log  /var/log/nginx/cache.log cache;
+{% endif %}
 
 {% if nginx_proxy is defined %}
     proxy_buffer_size {{nginx_proxy_buffer_size}};
