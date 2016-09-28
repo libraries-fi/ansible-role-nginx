@@ -8,6 +8,7 @@ nginx_install_state: present
 proxy_cache_inactive: '1d'
 # Large headers can go over this
 nginx_proxy_buffer_size: 8k
+nginx_error_log: '/var/log/nginx/error.log error;'
 nginx_access_log: '/var/log/nginx/cache.log cache;'
 #nginx_access_log: 'syslog:server=unix:/dev/log,severity=info cache;'
 # don't cache requests with PHP session cookie.
