@@ -23,6 +23,7 @@ http {
                      '"$http_user_agent" '
                      '"$remote_addr"';
    access_log {{ nginx_access_log }}
+   error_log  {{ nginx_error_log }}
 
 {% if nginx_proxy is defined %}
     proxy_buffer_size {{nginx_proxy_buffer_size}};
