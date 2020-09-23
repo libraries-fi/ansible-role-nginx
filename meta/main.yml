@@ -117,10 +117,6 @@ galaxy_info:
   #- system
   #- web
 dependencies:
-  - role: ajsalminen.apt_source
-    apt_source_config:
-      - "{{apt_source_definitions.get(ansible_distribution)}}"
-    when: nginx_enable_source == True and (ansible_distribution != "Debian" or ansible_distribution_major_version|int < 10)  # XXX: need to be handled elsewhere
   - role: ajsalminen.nginx_site
     when: nginx_disable_default == False
   - role: ajsalminen.nginx_common
