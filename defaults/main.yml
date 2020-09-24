@@ -15,16 +15,3 @@ nginx_access_log: '/var/log/nginx/cache.log cache;'
 # don't cache requests with PHP session cookie.
 nginx_bypass_cache_cookies:
   - ~SESS
-
-apt_source_definitions:
-  Ubuntu:
-    source: ppa:nginx/stable
-    packages:
-      - pattern: '*nginx*'
-  Debian:
-    source: deb http://packages.dotdeb.org {{ansible_lsb.codename}} all
-    key:
-      url: http://www.dotdeb.org/dotdeb.gpg
-      id: 89DF5277
-    packages:
-      - pattern: '*nginx*'
